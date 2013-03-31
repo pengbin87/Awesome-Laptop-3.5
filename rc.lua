@@ -7,7 +7,7 @@ require("awful.autofocus")
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
-beautiful.init("/home/setkeh/.config/awesome/themes/default/theme.lua")
+beautiful.init("/home/pb/.config/awesome/themes/default/theme.lua")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -18,6 +18,7 @@ freedesktop.utils.icon_theme = 'gnome'
 --Vicious + Widgets 
 vicious = require("vicious")
 local wi = require("wi")
+
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -48,6 +49,7 @@ end
 terminal = "urxvt -fg green -bg black"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+home_path = "/home/pb/"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -59,11 +61,11 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 local layouts =
 {
-    awful.layout.suit.floating,
     awful.layout.suit.tile,
     awful.layout.suit.tile.left,
     awful.layout.suit.tile.bottom,
     awful.layout.suit.tile.top,
+    awful.layout.suit.floating,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
@@ -103,26 +105,26 @@ end
 -- Define a tag table which hold all screen tags.
 tags = {
  names  = { 
-         '☭:IRC',
-         '⚡:Luakit', 
-         '♨:Chrome', 
-         '☠:Vim',  
-         '☃:Vbox', 
-         '⌥:Multimedia', 
-         '⌘:Conky',
-         '✇:IDE',
-         '✣:Facepalm',
+        1,-- '☭:IRC',
+        2,-- '⚡:Luakit', 
+        3,-- '♨:Chrome', 
+        4,-- '☠:Vim',  
+        5,-- '☃:Vbox', 
+        6,-- '⌥:Multimedia', 
+        7,-- '⌘:Conky',
+        8,-- '✇:IDE',
+        9,-- '✣:Facepalm',
            },
  layout = {
-      layouts[5],   -- 1:irc
-      layouts[10],  -- 2:luakit
-      layouts[10],  -- 3:chrome
-      layouts[12],  -- 4:vim
-      layouts[2],   -- 5:vbox
-      layouts[10],  -- 6:multimedia
-      layouts[10],  -- 7:conky
-      layouts[2],   -- 8:ide
-      layouts[10],  -- 9:facepalm
+      layouts[1], -- 5],   -- 1:irc
+      layouts[1], -- 10],  -- 2:luakit
+      layouts[1], -- 10],  -- 3:chrome
+      layouts[1], -- 12],  -- 4:vim
+      layouts[1], -- 2],   -- 5:vbox
+      layouts[1], -- 10],  -- 6:multimedia
+      layouts[1], -- 10],  -- 7:conky
+      layouts[1], -- 2],   -- 8:ide
+      layouts[1], -- 10],  -- 9:facepalm
           }
        }
   for s = 1, screen.count() do
@@ -135,7 +137,7 @@ tags = {
 -- menu icon menu pdq 07-02-2012
  local wallmenu = {}
  local function wall_load(wall)
- local f = io.popen('ln -sfn ' .. home_path .. '.config/awesome/wallpaper/' .. wall .. ' ' .. home_path .. '.config/awesome/themes/default/bg.png')
+ local f = io.popen('ln -sfn ' .. home_path .. '.config/awesome/wallpaper/' .. wall .. ' ' .. home_path .. '.config/awesome/themes/default/bg.jpg')
  awesome.restart()
  end
  local function wall_menu()
